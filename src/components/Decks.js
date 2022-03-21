@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { IconContext } from "react-icons";
+import { IconContext, icons } from "react-icons";
 import {FiPlay} from 'react-icons/fi'
+import Options from "./Options";
+import {AiFillCloseCircle, AiFillQuestionCircle, AiFillCheckCircle} from 'react-icons/ai'
 
-const decks = [{
+export const decks = [{
     deckName:'react questions',
         cards:[
             {question: 'O que é JSX?',response:'Uma extensão de linguagem do JavaScript'},
@@ -15,17 +17,15 @@ const decks = [{
             {question: 'Usamos estado (state) para...',response:'dizer para o React quais informações quando atualizadas devem renderizar a tela novamente'}
     ]
 }
-
 ];
 
 function Deck(props){
-    const {state} = props;
-
-    const cards = decks[0].cards.sort(comparador);
+    
+    const {state, setSizeDeck, cards, ...rest} = props;
+    
     const stateOfMain = `main ${(state) ? 'disabled':''}`
 
     return (
-        <>
         <main className={stateOfMain}>
             <div className="topDeck">
                 <img src="/img/logo.png" alt="Um Raio, logo do aplicativo"/>
@@ -33,71 +33,106 @@ function Deck(props){
             </div>
             <div className="questions">
                 {cards.map((card, index) =>{
-                return <Card key = {index} cont={index} info = {card}/>
+                return <Card key = {index} cont={index} info = {card} rest={rest}/>
+                
                 })}
             </div>
             
-        </main>        
-        </>
+        </main>              
     );
-
-    function comparador() { 
-        return Math.random() - 0.5; 
-    }
-
 }
 
 function Card(props){
     const {question, response} = props.info;
-
+    const{rest, cont} = props;
+    
     const [virado, setVira] = useState(false);
     const [showResponse, setStateResponse] = useState(false);
-
-
-    const state = `card ${(virado === true) ? 'virado': ''}`
-
+    const [icon, setIcon] = useState(0);
 
     if(!virado){
-        return(
-            <div className={state} onClick={() => setVira(true)}>
-                <h1>Pergunta {props.cont + 1}</h1>
-                
-                <IconContext.Provider value={{size:'25px'}}>
-                        <FiPlay/>
-                </IconContext.Provider>
-                
-            </div>
+
+        if(icon == 0){
+            const state = `card ${(virado) ? 'virado': ''}`;
+            return(
+                <div className={state} onClick={() => setVira(true)}>
+                    <Content content={`Pergunta ${cont + 1}`}/>
+                    <Icon name={FiPlay} color={'#333333'} size={'25px'}/>
+                </div>
         );
-    }else{
+        }else{
+            const state = `card tachinha${icon}`;
+            switch (icon){
+                case 1:
+                    return(
+                    <div className={state} onClick={() => setVira(true)}>
+                        <Content content={`Pergunta ${cont + 1}`}/>
+                        <Icon name={AiFillCloseCircle} color={'#FF3030'} size={'33px'}/>
+                    </div>
+                    );break;
+                case 2: 
+                    return(
+                        <div className={state} onClick={() => setVira(true)}>
+                            <Content content={`Pergunta ${cont + 1}`}/>
+                            <Icon name={AiFillQuestionCircle} color={'#FF922E'} size={'33px'}/>
+                        </div>
+                    );break;
+                case 3:
+                    return(
+                        <div className={state} onClick={() => setVira(true)}>
+                            <Content content={`Pergunta ${cont + 1}`}/>
+                            <Icon name={AiFillCheckCircle} color={'#2FBE34'} size={'33px'}/>
+                        </div>
+                    );break;
+            }  
+        }
+        
+    }
+
+    else{
+        const state = `card ${(virado) ? 'virado': ''}`;
         return (!showResponse) ? (
             <div className={state} onClick={() => setStateResponse(true)}>
-                <h1>{question}</h1>
-            
+               <Content content={question}/>
                 <div className="seta" >
                     <img src="/img/setinha.png"/>
                 </div>
             </div>
         ):(
             <div className={state} >
-                    <Options response={response} />
+                <div className="show"> 
+                    <Content content={response}/>
+                    <Options rest={rest} setVira={setVira} setIcon={setIcon} />
+                </div>
             </div>
         );
     }
 
 }
 
-function Options(props){
-    
+function Content({content}){
+
     return(
-        <div className="show"> 
-            <h1 className="response">{props.response}</h1>
-            <div className="options">
-                <h1 className="naolembrei">Não lembrei</h1>
-                <h1 className="quase">Quase não lembrei</h1>
-                <h1 className="zap">Zap!</h1>
-            </div>
-        </div>
+        <h1>{content}</h1>
     );
 }
+
+function Icon ({name, color, size}){
+
+    const IconCompenent = name;
+    
+    return(
+        
+        <IconContext.Provider value={{color:color, size:size}}>
+            <IconCompenent />
+        </IconContext.Provider>
+        
+    );
+
+}
+
+
+
+
 
 export default Deck;
