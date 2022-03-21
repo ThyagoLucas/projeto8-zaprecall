@@ -1,16 +1,10 @@
 body{
   background-color: #FB6B6B;
-  
-  
 }
 .root{
-
   font-family: 'Recursive';
   font-style: normal;
-  
   display: flex;
-  
-  
   flex-direction: column;
 }
 
@@ -55,13 +49,11 @@ body{
 .start img{
   width: 100px;
 }
-
 .main {
   display: flex;
   flex-direction: column;
+align-items: center;
   color: #333333;
-  
-  
 }
 .topDeck{
   padding-top:  30px;
@@ -78,8 +70,7 @@ body{
   position: fixed;
   color: #FFFFFF;
   width: 100%;
-  background-color: #FB6B6B;
- 
+  background-color: #FB6B6B; 
 }
 .card{
   
@@ -95,13 +86,9 @@ body{
   padding: 10px;
 }
 .card h1{
-  
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
-}
-.firplay{
-  size: 100px;
 }
 .virado{
   width: 80%;
@@ -109,15 +96,12 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-
 }
 .seta{
-  
   display: flex;
   align-items: flex-end;
   height: 100%;
 }
-
 .questions{
   margin-top: 115px ;
   display: flex;
@@ -130,23 +114,18 @@ body{
   width: 100%;
   display: flex;
   text-align: start;
-  
-  
 }
 .options{
-  
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: flex-end; 
   height: 100%;
-  
 }
 .show{
   display: flex;
   width: 100%;
   flex-direction: column;
-  
   height: 100%;
 }
 .card .naolembrei{
@@ -160,7 +139,6 @@ body{
   text-align: center;
   color: #FFFFFF;
   padding: 7px;
-  
 }
 .card .quase{
   border-radius: 5px;
@@ -173,7 +151,6 @@ body{
   text-align: center;
   color: #FFFFFF;
   padding: 7px;
-  
 }
 .card .zap{
   border-radius: 5px;
@@ -187,7 +164,6 @@ body{
   color: #FFFFFF;
   padding: 7px;
 }
-
 footer{
   position: fixed;
   bottom: 0;
@@ -202,23 +178,18 @@ footer{
   justify-content: center;
   align-items: center;
   color: #8a6c6c;
-
 }
 .finish{
   padding: 10px 20px;
   text-align: center;
 }
-
 .finish div{
   padding: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-
 }
-
-
 .tachinha1{
   size: 5px;
   text-decoration-line: line-through;
@@ -236,9 +207,15 @@ footer{
   pointer-events: none;
 }
 
-
 /*Utilities*/
 
 .disabled{
   display: none;
+}
+
+@media (min-width: 600px){
+  .questions{
+    width: 600px;
+  }
+  
 }

@@ -51,7 +51,6 @@ function Card(props){
     const [icon, setIcon] = useState(0);
 
     if(!virado){
-
         if(icon == 0){
             const state = `card ${(virado) ? 'virado': ''}`;
             return(
