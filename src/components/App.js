@@ -9,7 +9,7 @@ function comparador() {
 }
 
 export default function App() {
-    const [stateInitialScreen, setState] = useState(false);
+    const [stateInitialScreen, setState] = useState(true);
     const [sizeDeck, setSize] = useState(decks[0].cards.length);
     const [icons, setIcons] = useState([]);
     const [cont, setCont] = useState(0);
