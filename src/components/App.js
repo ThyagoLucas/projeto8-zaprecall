@@ -21,10 +21,6 @@ export default function App() {
         setCards(sortedCards);
     }, [] );
 
-    
-   
-   
-
     return (
     <>
         <InitialScreen state ={stateInitialScreen} setState={setState}/>

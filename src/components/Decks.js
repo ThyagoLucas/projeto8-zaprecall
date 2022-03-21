@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IconContext, icons } from "react-icons";
+import { IconContext} from "react-icons";
 import {FiPlay} from 'react-icons/fi'
 import Options from "./Options";
 import {AiFillCloseCircle, AiFillQuestionCircle, AiFillCheckCircle} from 'react-icons/ai'
@@ -20,9 +20,7 @@ export const decks = [{
 ];
 
 function Deck(props){
-    
     const {state, setSizeDeck, cards, ...rest} = props;
-    
     const stateOfMain = `main ${(state) ? 'disabled':''}`
 
     return (
@@ -51,7 +49,7 @@ function Card(props){
     const [icon, setIcon] = useState(0);
 
     if(!virado){
-        if(icon == 0){
+        if(icon === 0){
             const state = `card ${(virado) ? 'virado': ''}`;
             return(
                 <div className={state} onClick={() => setVira(true)}>
@@ -68,33 +66,31 @@ function Card(props){
                         <Content content={`Pergunta ${cont + 1}`}/>
                         <Icon name={AiFillCloseCircle} color={'#FF3030'} size={'33px'}/>
                     </div>
-                    );break;
+                    )
                 case 2: 
                     return(
                         <div className={state} onClick={() => setVira(true)}>
                             <Content content={`Pergunta ${cont + 1}`}/>
                             <Icon name={AiFillQuestionCircle} color={'#FF922E'} size={'33px'}/>
                         </div>
-                    );break;
+                    )
                 case 3:
                     return(
                         <div className={state} onClick={() => setVira(true)}>
                             <Content content={`Pergunta ${cont + 1}`}/>
                             <Icon name={AiFillCheckCircle} color={'#2FBE34'} size={'33px'}/>
                         </div>
-                    );break;
+                    )
             }  
         }
         
-    }
-
-    else{
+    }else{
         const state = `card ${(virado) ? 'virado': ''}`;
         return (!showResponse) ? (
             <div className={state} onClick={() => setStateResponse(true)}>
                <Content content={question}/>
                 <div className="seta" >
-                    <img src="/img/setinha.png"/>
+                    <img src="/img/setinha.png" alt="Seta de virar para resposta"/>
                 </div>
             </div>
         ):(
@@ -106,7 +102,6 @@ function Card(props){
             </div>
         );
     }
-
 }
 
 function Content({content}){
@@ -129,9 +124,5 @@ function Icon ({name, color, size}){
     );
 
 }
-
-
-
-
 
 export default Deck;

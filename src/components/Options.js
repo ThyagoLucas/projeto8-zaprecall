@@ -23,6 +23,4 @@ function Options(props){
     }
 }
 
-
-
 export default Options;

@@ -19,29 +19,24 @@ function Footer(props){
                             <AiFillCloseCircle/>
                         </IconContext.Provider>
                     );
-                    break;
-        
                 case 2:
                     return (
                         <IconContext.Provider value={{color:'#FF922E', size:'33px'}}>
                             <AiFillQuestionCircle/>
                         </IconContext.Provider>
                     );
-                    break;
                 case 3:
                     return (
                         <IconContext.Provider value={{color:'#2FBE34', size:'33px'}}>
                             <AiFillCheckCircle/>
                         </IconContext.Provider>
                     );
-                    break;
             }
         }
         )}
         </div>
     </footer>
     ): (
-
         <footer className={stateFooter}>
             <FinishMsg haveWrong={haveWrong} />
             <h1>{cont}/{length} concluídos </h1>
@@ -53,66 +48,46 @@ function Footer(props){
                             <IconContext.Provider value={{color:'#FF3030', size:'33px'}}>
                                 <AiFillCloseCircle/>
                             </IconContext.Provider>
-                        );
-                        break;
-            
+                        )
                     case 2:
                         return (
                             <IconContext.Provider value={{color:'#FF922E', size:'33px'}}>
                                 <AiFillQuestionCircle/>
                             </IconContext.Provider>
                         );
-                        break;
                     case 3:
                         return (
                             <IconContext.Provider value={{color:'#2FBE34', size:'33px'}}>
                                 <AiFillCheckCircle/>
                             </IconContext.Provider>
                         );
-                        break;
                 }
-            }
-            )}
+            })}
             </div>
         </footer>
-        
-        
-    )
-
+    );
 }
-
 
 function FinishMsg({haveWrong}){
 
     return (haveWrong) ?(
-
         <div className='finish'>
             <div>
-                <img src='/img/sad.png'/>
+                <img src='/img/sad.png' alt='Emijocon de tristeza'/>
                 <h1>Puutz...</h1>
             </div>
             <h1>Ainda faltam alguns...</h1>
             <h1>Mas não desanime!</h1>
         </div>
-
-
     ):(
         <div className='finish'>
             <div>
-                <img src='/img/party.png'/>
+                <img src='/img/party.png' alt='Emojcon de alegria'/>
                 <h1>Parabéns</h1>
             </div>
             <h1>Você não esqueceu de nenhum flashcard!</h1>
             
         </div>
     );
-
 }
-function Icone(props){
-    
-   
-}
-
-
-
 export default Footer;
